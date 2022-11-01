@@ -1,0 +1,118 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  _id: ID!
+  address: String
+  tokens: [Token!]
+  ownedTokens: [Token!]!
+  createdTokens: [Token!]!
+  createdAuctions: [Auction!]!
+  createdBuyNowItems: [BuyNow!]!
+}
+
+type Event {
+  _id: ID!
+  from: User
+  to: User
+  token: Token
+  price: Float
+  txHash: String
+}
+
+type Kollection {
+  _id: ID!
+  contract: String
+  name: String
+  icon: String
+  type: String
+  logo: String
+  tokens: [Token!]
+}
+
+type Token {
+  _id: ID!
+  tokenId: Float
+  tokenUri: String
+  owner: User
+  creator: User
+  kollection: Kollection
+  events: [Event!]
+}
+
+type Erc20 {
+  _id: ID!
+  address: String
+  name: String
+  symbol: String
+}
+
+type Auction {
+  _id: ID!
+  auctionId: String
+  seller: User
+  token: Token
+  bidder: User
+  bid: Float
+  startTime: Float
+  endTime: Float
+  reservePrice: Float
+  ended: Boolean
+  auctionCurrency: Erc20
+}
+
+type BuyNow {
+  _id: ID!
+  itemId: String
+  seller: User
+  token: Token
+  winner: User
+  purchasedAt: Float
+  reservePrice: Float
+  currency: Erc20
+}
+
+type Query {
+  tokens: [Token!]!
+  token(input: FindTokenInput!): Token!
+  users: [User!]!
+  user(input: FindUserInput!): User!
+  userByAddress(input: FindUserByAddressInput!): User!
+  kollections: [Kollection!]!
+  kollection(input: FindKollectionInput!): Kollection!
+  events: [Event!]!
+  event(input: FindEventInput!): Event!
+  auctions: [Auction!]!
+  auction(input: FindAuctionInput!): Auction!
+  buyNowItems: [BuyNow!]!
+  buyNowItem(input: FindBuyNowInput!): BuyNow!
+}
+
+input FindTokenInput {
+  _id: String!
+}
+
+input FindUserInput {
+  _id: String!
+}
+
+input FindUserByAddressInput {
+  address: String!
+}
+
+input FindKollectionInput {
+  _id: String!
+}
+
+input FindEventInput {
+  _id: String!
+}
+
+input FindAuctionInput {
+  _id: String!
+}
+
+input FindBuyNowInput {
+  _id: String!
+}
