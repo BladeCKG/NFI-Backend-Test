@@ -1,4 +1,4 @@
-## Installation
+## Installation Nest.js+Rest+Postgres
 1. Clone the project using ```git clone git@github.com:BladeCKG/NFT-Backend-Test.git ``` command (or via SSH).
 
 2. Go to the project root directory and run ```npm i``` command.
